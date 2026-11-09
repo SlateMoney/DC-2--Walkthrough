@@ -8,6 +8,9 @@ This walkthrough documents the steps I followed to complete the machine, includi
 
 **Objective:** Capture all flags and obtain root access.
 
+Note on Credentials:
+The usernames and passwords shown throughout this walkthrough are intentionally included to document the steps taken during the DC-2 challenge and to demonstrate how weak credentials can be discovered and exploited in a controlled environment. These credentials belong exclusively to the VulnHub DC-2 virtual machine, which is designed for educational penetration-testing practice. They are included for learning and demonstration purposes only and should not be used against any real-world systems. All testing was carried out within my own authorised lab environment.
+
 ### Lab Information
 
 | Detail | Information |
