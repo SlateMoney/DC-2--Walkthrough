@@ -48,7 +48,6 @@ ip a
 
 My Kali machine was using `192.168.56.107` on the host-only network.
 
-**Screenshot 01 — Network interfaces**
 
 ![Network interfaces](screenshots/01-network-interfaces.png)
 
@@ -72,7 +71,6 @@ This allowed me to access the website using:
 http://dc-2/
 ```
 
-**Screenshot 02 — Hosts file configuration**
 
 ![Hosts file](screenshots/02-hosts-file.png)
 
@@ -90,7 +88,6 @@ The scan identified the DC-2 machine at:
 192.168.56.103
 ```
 
-**Screenshot 03 — Network discovery**
 
 ![Network discovery](screenshots/03-network-discovery.png)
 
@@ -113,7 +110,6 @@ The scan also provided information indicating that the website was running WordP
 
 The SSH service was running on port `7744`, rather than the standard SSH port `22`.
 
-**Screenshot 04 — Nmap scan results**
 
 ![Nmap scan](screenshots/04-nmap-scan.png)
 
@@ -135,7 +131,6 @@ The first flag was displayed on the website and contained a clue referring to Ce
 
 This suggested that I should investigate the website's content and use it to generate a custom wordlist.
 
-**Screenshot 05 — DC-2 website**
 
 ![DC-2 website](screenshots/05-website.png)
 
@@ -145,7 +140,6 @@ The first flag provided a hint about using CeWL to create a wordlist.
 
 This indicated that words found on the website could be useful when testing passwords.
 
-**Screenshot 06 — Flag 1**
 
 ![Flag 1](screenshots/06-flag1.png)
 
@@ -168,7 +162,6 @@ adipiscing
 
 These words would be useful during the password-testing stage.
 
-**Screenshot 07 — CeWL command**
 
 ![CeWL command](screenshots/07-cewl-command.png)
 
@@ -182,7 +175,6 @@ cat worldlist.txt
 
 The output contained words extracted from the target website.
 
-**Screenshot 08 — Generated wordlist**
 
 ![Generated wordlist](screenshots/08-wordlist.png)
 
@@ -204,7 +196,6 @@ tom
 
 It also identified WordPress version 4.7.10 and reported that XML-RPC was enabled.
 
-**Screenshot 09 — WPScan enumeration**
 
 ![WPScan enumeration](screenshots/09-wpscan.png)
 
@@ -220,7 +211,6 @@ tom
 
 Having identified the usernames, I moved on to testing the credentials using the custom wordlist.
 
-**Screenshot 10 — WordPress usernames**
 
 ![WordPress users](screenshots/10-wordpress-users.png)
 
@@ -247,7 +237,6 @@ The credentials discovered during the assessment included:
 | tom | parturient |
 | jerry | adipiscing |
 
-**Screenshot 11 — WordPress Hydra results**
 
 ![WordPress Hydra results](screenshots/11-hydra-wordpress.png)
 
@@ -259,7 +248,6 @@ The `tom` account did not reveal anything particularly useful.
 
 I then logged in as `jerry`.
 
-**Screenshot 12 — WordPress login**
 
 ![WordPress login](screenshots/12-wordpress-login.png)
 
@@ -273,7 +261,6 @@ Looking back at the Nmap results, SSH was exposed on port `7744`.
 
 This made SSH the next service to investigate.
 
-**Screenshot 13 — Flag 2**
 
 ![Flag 2](screenshots/13-flag2.png)
 
@@ -300,7 +287,6 @@ Password: parturient
 
 This confirmed that the credentials could be used to access the SSH service.
 
-**Screenshot 14 — Hydra SSH password discovery**
 
 ![Hydra SSH results](screenshots/14-hydra-ssh.png)
 
@@ -316,7 +302,6 @@ ssh tom@192.168.56.103 -p 7744
 
 The connection was successful.
 
-**Screenshot 15 — SSH login as Tom**
 
 ![SSH login](screenshots/15-ssh-login.png)
 
@@ -339,7 +324,6 @@ command not found
 
 This indicated that the shell environment was restricted and normal command execution was limited.
 
-**Screenshot 16 — Restricted shell**
 
 ![Restricted shell](screenshots/16-restricted-shell.png)
 
@@ -374,8 +358,6 @@ vi
 
 The presence of `vi` was particularly interesting because editors can sometimes provide access to shell functionality.
 
-**Screenshot 17 — Available commands and files**
-
 ![Available commands](screenshots/17-available-commands.png)
 
 ---
@@ -384,20 +366,23 @@ The presence of `vi` was particularly interesting because editors can sometimes 
 
 ## 5.1 Using Vi
 
-I used the available `vi` editor to access shell functionality.
+After identifying that vi was one of the available commands, I searched for it on GTFOBins, a resource that documents how common Unix binaries can be used to bypass restricted environments or execute commands.
 
-After returning to the shell, I modified the environment variables to restore access to normal system commands.
+The GTFOBins entry for vi showed that the editor could be used to access shell functionality.
+
+Using this information, I used the available vi editor to escape the restricted shell and return to a command environment where I could execute additional commands.
+
+After returning to the shell, I modified the environment variables to restore access to normal system commands:
 
 ```bash
 export PATH=/bin:/usr/bin:$PATH
 export SHELL=/bin/bash:$SHELL
 ```
 
-**Screenshot 18 — Vi shell escape**
 
 ![Vi shell escape](screenshots/18-vi-shell-escape.png)
-![Vi shell escape](screenshots/18-vi-shell-escape.png)
-![Vi shell escape](screenshots/18-vi-shell-escape.png)
+![Vi shell escape](screenshots/18-vi-shell-escape-pt2.png)
+![Vi shell escape](screenshots/18-vi-shell-escape-pt3.png)
 
 ## 5.2 Restoring Command Access
 
