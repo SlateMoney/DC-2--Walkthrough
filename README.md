@@ -1,4 +1,4 @@
-# DC-2 — VulnHub Walkthrough
+# DC-2 --- VulnHub Walkthrough
 
 ## Introduction
 
