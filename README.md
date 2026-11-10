@@ -504,8 +504,6 @@ This opened the Git help page inside a pager.
 
 The pager provided a way to execute a shell command.
 
-**Screenshot 25 — Git help pager**
-
 ![Git pager](screenshots/25-git-pager.png)
 
 ## 7.3 Obtaining a Root Shell
