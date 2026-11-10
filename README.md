@@ -396,11 +396,6 @@ cat flag3.txt
 
 This allowed me to read the third flag.
 
-
-![Restored command access](screenshots/19-command-access.png)
-
-## 5.3 Discovering Flag 3
-
 The third flag contained the following message:
 
 > Poor old Tom is always running after Jerry. Perhaps he should su for all the stress he causes.
