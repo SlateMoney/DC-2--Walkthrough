@@ -394,7 +394,6 @@ cat flag3.txt
 
 This allowed me to read the third flag.
 
-**Screenshot 19 — Restored command access**
 
 ![Restored command access](screenshots/19-command-access.png)
 
@@ -406,7 +405,7 @@ The third flag contained the following message:
 
 The clue suggested that I should switch from the Tom account to another local user named Jerry.
 
-**Screenshot 20 — Flag 3**
+
 
 ![Flag 3](screenshots/20-flag3.png)
 
@@ -430,7 +429,7 @@ adipiscing
 
 The user switch was successful.
 
-**Screenshot 21 — Switching to Jerry**
+
 
 ![Switching users](screenshots/21-su-jerry.png)
 
@@ -448,7 +447,7 @@ I found another flag file:
 flag4.txt
 ```
 
-**Screenshot 22 — Jerry's home directory**
+
 
 ![Jerry home directory](screenshots/22-jerry-home.png)
 
@@ -466,7 +465,7 @@ The message explained that I was not finished yet and included the clue:
 
 This strongly suggested that Git would be involved in the final stage of the challenge.
 
-**Screenshot 23 — Flag 4**
+
 
 ![Flag 4](screenshots/23-flag4.png)
 
@@ -490,7 +489,7 @@ The output showed:
 
 This meant that Jerry could run Git as root without entering a password.
 
-**Screenshot 24 — Sudo permissions**
+
 
 ![Sudo permissions](screenshots/24-sudo-permissions.png)
 
@@ -530,7 +529,7 @@ root@DC-2:/home/jerry#
 
 I had successfully escalated from the Jerry account to root.
 
-**Screenshot 26 — Root shell**
+
 
 ![Root shell](screenshots/26-root-shell.png)
 
@@ -553,7 +552,6 @@ The directory contained:
 final-flag.txt
 ```
 
-**Screenshot 27 — Root directory**
 
 ![Root directory](screenshots/27-root-directory.png)
 
@@ -566,8 +564,6 @@ cat final-flag.txt
 ```
 
 The file displayed the final congratulatory message, confirming that the challenge had been completed successfully.
-
-**Screenshot 28 — Final flag**
 
 ![Final flag](screenshots/28-final-flag.png)
 
