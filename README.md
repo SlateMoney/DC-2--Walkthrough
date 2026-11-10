@@ -250,6 +250,8 @@ I then logged in as `jerry`.
 
 
 ![WordPress login](screenshots/12-wordpress-login.png)
+![WordPress login](screenshots/12-wordpress-login-pt2.png)
+![WordPress login](screenshots/12-wordpress-login-pt3.png)
 
 ## 3.3 Discovering Flag 2
 
